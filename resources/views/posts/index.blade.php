@@ -20,12 +20,15 @@
             <td class="px-4 py-2 whitespace-nowrap text-gray-700">{{$post['posted_by']['name']}}</td>
             <td class="px-4 py-2 whitespace-nowrap text-gray-700">{{$post['created_at']}}</td>
             <td class="px-4 py-2 whitespace-nowrap">
-              <a
-               href="{{route('posts.show', $post['id'])}}"
+              <a href="{{route('posts.show', $post['id'])}}"
                 class="inline-block rounded-sm bg-indigo-600 px-4 py-2 text-xs font-medium text-white hover:bg-indigo-700"
-              >
-                View
-              </a>
+              >View</a>
+              <a href="{{route('posts.edit', $post['id'])}}"
+                class="inline-block rounded-sm bg-pink-600 px-4 py-2 text-xs font-medium text-white hover:bg-pink-700"
+              >Update</a>
+              <a href="{{route('posts.show', $post['id'])}}"
+                class="inline-block rounded-sm bg-red-600 px-4 py-2 text-xs font-medium text-white hover:bg-red-700"
+              >Delete</a>
             </td>
           </tr>
           @endforeach

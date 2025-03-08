@@ -18,12 +18,22 @@ class PostController extends Controller
         return view('posts.create');
     }
 
+    public function edit() {
+        $post = ['id' => 1, 'title' => "title 1", 'description' => "this is description 1", 'posted_by' => ['name' => "dina", "email" => "dina@test.com", "created_at" => "2020-02-12"], 'created_at' => "2020-02-12"];
+        return view('posts.edit', ['post' => $post]);
+    }
+
     public function show($id) {   
         $post = ['id' => 1, 'title' => "title 1", 'description' => "this is description 1", 'posted_by' => ['name' => "dina", "email" => "dina@test.com", "created_at" => "2020-02-12"], 'created_at' => "2020-02-12"];
         return view('posts.show', ['post' => $post]);
     }
 
     public function store() {   
+        // var_dump(request()->all());    
+        return to_route('posts.index');
+    }
+
+    public function update($id) {   
         // var_dump(request()->all());    
         return to_route('posts.index');
     }
