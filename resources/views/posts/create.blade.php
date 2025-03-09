@@ -27,8 +27,9 @@
                 </div>
                 <div class="grid grid-cols-1 gap-4 text-center sm:grid-cols-3">
                     <select name="posted_by" id="" class="border border-gray-200 rounded p-2">
-                        <option value="dina">dina</option>
-                        <option value="test">test</option>
+                      @foreach ($users as $user)
+                        <option value="{{$user->id}}">{{$user->name}}</option>
+                      @endforeach
                     </select>
                 </div>
                 
