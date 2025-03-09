@@ -36,8 +36,10 @@
             </td>
           </tr>
           @endforeach
-    
         </tbody>
       </table>
+    </div>
+    <div class="m-4 ">
+        {{ $posts->links() }}
     </div>
 </x-layout>
