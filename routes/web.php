@@ -19,8 +19,8 @@ Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('posts.
 
 Route::get('/comments', [CommentController::class, 'index'])->name('comments.index');
 Route::post('/comments', [CommentController::class, 'store'])->name('comments.store');
-// Route::get('/comments/create', 'CommentController@create')->name('comments.create');
-// Route::get('/comments/{comment}', 'CommentController@show')->name('comments.show');
-// Route::get('/comments/{comment}/edit', 'CommentController@edit')->name('comments.edit');
-// Route::put('/comments/{comment}', 'CommentController@update')->name('comments.update');
-// Route::delete('/comments/{comment}', 'CommentController@destroy')->name('comments.destroy');
+Route::get('/comments/create', [CommentController::class, 'create'])->name('comments.create');
+Route::get('/comments/{comment}', [CommentController::class, 'show'])->name('comments.show');
+Route::get('/comments/{comment}/edit', [CommentController::class, 'edit'])->name('comments.edit');
+Route::put('/comments/{comment}', [CommentController::class, 'update'])->name('comments.update');
+Route::delete('/comments/{comment}', [CommentController::class, 'destroy'])->name('comments.destroy');

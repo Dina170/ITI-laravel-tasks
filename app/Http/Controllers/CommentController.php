@@ -21,8 +21,10 @@ class CommentController extends Controller
     }
 
     public function destroy($id) {
-        $comment = Comment::destroy($id);
-        return to_route('posts.show', ['post' => $comment->commentable_id]);
+        $comment = Comment::find($id);
+        $commentable_id = $comment->commentable_id;
+        $comment->delete();
+        return to_route('posts.show', ['post' => $commentable_id]);
     }
 
     public function update($id) {
@@ -31,6 +33,14 @@ class CommentController extends Controller
             'content' => request()->content,
         ]);
         return to_route('posts.show', ['post' => $comment->commentable_id]);
+    }
+
+    public function updateAjax($id) {
+        $comment = Comment::find($id);
+        $comment->update([
+            'content' => request()->content,
+        ]);
+        return response()->json(['success' => true]);
     }
 
     public function edit($id) {

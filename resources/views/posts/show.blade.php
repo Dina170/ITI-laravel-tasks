@@ -33,4 +33,5 @@
       @include('comments.create', ['post' => $post])
       </div>
     </div>
+    @include('comments.edit-modal')
 </x-layout>
