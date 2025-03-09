@@ -15,10 +15,10 @@
         <tbody class="divide-y divide-gray-200">
           @foreach ($posts as $post) 
           <tr>
-            <td class="px-4 py-2 font-medium whitespace-nowrap text-gray-900">{{$post['id']}}</td>
-            <td class="px-4 py-2 whitespace-nowrap text-gray-700">{{$post['title']}}</td>
-            <td class="px-4 py-2 whitespace-nowrap text-gray-700">{{$post['posted_by']['name']}}</td>
-            <td class="px-4 py-2 whitespace-nowrap text-gray-700">{{$post['created_at']}}</td>
+            <td class="px-4 py-2 font-medium whitespace-nowrap text-gray-900">{{$post->id}}</td>
+            <td class="px-4 py-2 whitespace-nowrap text-gray-700">{{$post->title}}</td>
+            <td class="px-4 py-2 whitespace-nowrap text-gray-700">{{$post->user?->name}}</td>
+            <td class="px-4 py-2 whitespace-nowrap text-gray-700">{{$post->created_at}}</td>
             <td class="px-4 py-2 whitespace-nowrap">
               <a href="{{route('posts.show', $post['id'])}}"
                 class="inline-block rounded-sm bg-indigo-600 px-4 py-2 text-xs font-medium text-white hover:bg-indigo-700"
