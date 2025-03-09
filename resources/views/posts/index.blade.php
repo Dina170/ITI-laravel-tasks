@@ -18,7 +18,7 @@
             <td class="px-4 py-2 font-medium whitespace-nowrap text-gray-900">{{$post->id}}</td>
             <td class="px-4 py-2 whitespace-nowrap text-gray-700">{{$post->title}}</td>
             <td class="px-4 py-2 whitespace-nowrap text-gray-700">{{$post->user?->name}}</td>
-            <td class="px-4 py-2 whitespace-nowrap text-gray-700">{{$post->created_at}}</td>
+            <td class="px-4 py-2 whitespace-nowrap text-gray-700">{{ \Carbon\Carbon::parse($post->created_at)->format('d M Y') }}</td>
             <td class="px-4 py-2 whitespace-nowrap">
               <a href="{{route('posts.show', $post['id'])}}"
                 class="inline-block rounded-sm bg-indigo-600 px-4 py-2 text-xs font-medium text-white hover:bg-indigo-700"
@@ -26,9 +26,13 @@
               <a href="{{route('posts.edit', $post['id'])}}"
                 class="inline-block rounded-sm bg-pink-600 px-4 py-2 text-xs font-medium text-white hover:bg-pink-700"
               >Update</a>
-              <a href="{{route('posts.show', $post['id'])}}"
-                class="inline-block rounded-sm bg-red-600 px-4 py-2 text-xs font-medium text-white hover:bg-red-700"
-              >Delete</a>
+              <form method="POST" class="inline-block" action="{{route('posts.destroy', $post['id'])}}" onsubmit="return confirm('Are you sure you want to delete this post?');">
+                @csrf
+                @method('DELETE')
+                <button type="submit" 
+                  class="inline-block rounded-sm bg-red-600 px-4 py-2 text-xs font-medium text-white hover:bg-red-700"
+                >Delete</button>
+              </form>
             </td>
           </tr>
           @endforeach
@@ -36,4 +40,4 @@
         </tbody>
       </table>
     </div>
-    </x-layout>
+</x-layout>

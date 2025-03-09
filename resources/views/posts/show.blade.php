@@ -3,7 +3,7 @@
         <article class="min-w-75 rounded-lg shadow-sm transition hover:shadow-lg">
           
         <div class="bg-white p-4 sm:p-6">
-          <time datetime="2022-10-10" class="block text-xs text-gray-500">{{$post->created_at}}</time>
+          <time datetime="2022-10-10" class="block text-xs text-gray-500">{{ \Carbon\Carbon::parse($post->created_at)->format('d M Y') }}</time>
       
           <a href="#">
             <h3 class="mt-0.5 text-lg text-gray-900">{{$post->title}}</h3>
@@ -14,7 +14,7 @@
           </p>
         </div>
         <div class="bg-white p-4 sm:p-6">
-          <time datetime="2022-10-10" class="block text-xs text-gray-500">{{$post->user->created_at}}</time>
+          <time datetime="2022-10-10" class="block text-xs text-gray-500">{{ \Carbon\Carbon::parse($post->user->created_at)->format('d M Y') }}</time>
       
           <a href="#">
             <h3 class="mt-0.5 text-lg text-gray-900">{{$post->user->name}}</h3>
@@ -27,4 +27,4 @@
       </article>
     
     </div>
-    </x-layout>
+</x-layout>

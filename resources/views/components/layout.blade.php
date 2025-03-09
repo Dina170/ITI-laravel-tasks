@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ $title ?? 'Document' }}</title>
-    @vite('resources\css\app.css')
+    @vite('resources\css\app.css', 'resources\js\app.js')
 </head>
 <body>
     <header class="border-b border-gray-200 bg-gray-50">

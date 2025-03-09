@@ -52,8 +52,8 @@ class PostController extends Controller
         // return to_route('posts.index');
     }
 
-    // public function delete($id) {   
-    //     $post = Post::destroy($id);
-    //     return to_route('posts.index');
-    // }
+    public function destroy($id) {   
+        $post = Post::destroy($id);
+        return to_route('posts.index');
+    }
 }
