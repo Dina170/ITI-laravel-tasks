@@ -19,9 +19,11 @@ class PostController extends Controller
         return view('posts.create', ['users' => $users]);
     }
 
-    public function edit() {
-        $post = ['id' => 1, 'title' => "title 1", 'description' => "this is description 1", 'posted_by' => ['name' => "dina", "email" => "dina@test.com", "created_at" => "2020-02-12"], 'created_at' => "2020-02-12"];
-        return view('posts.edit', ['post' => $post]);
+    public function edit($id) {
+        $post = Post::find($id);
+        $users = User::all();
+
+        return view('posts.edit', ['post' => $post, 'users' => $users]);
     }
 
     public function show($id) {   
@@ -40,9 +42,18 @@ class PostController extends Controller
     }
 
     public function update($id) {   
-        // var_dump(request()->all());    
-        return to_route('posts.index');
+        $post = Post::find($id);
+        $post->update([
+            'title' => request()->title,
+            'description' => request()->description,
+            'user_id' => request()->posted_by,
+        ]);
+        return to_route('posts.show', ['post' => $post->id]);
+        // return to_route('posts.index');
     }
 
-    
+    // public function delete($id) {   
+    //     $post = Post::destroy($id);
+    //     return to_route('posts.index');
+    // }
 }

@@ -12,7 +12,7 @@
                     placeholder="Title"
                     type="text"
                     name="title"
-                    value="{{$post['title']}}"
+                    value="{{$post->title}}"
                   />
                 </div>
       
@@ -25,12 +25,13 @@
                     placeholder="Description"
                     rows="8"
                     name="description"
-                    >{{$post['description']}}</textarea>
+                    >{{$post->description}}</textarea>
                 </div>
                 <div class="grid grid-cols-1 gap-4 text-center sm:grid-cols-3">
                     <select name="posted_by" id="" class="border border-gray-200 rounded p-2">
-                        <option value="dina" @if ($post['posted_by'] === 'dina') selected @endif>dina</option>
-                        <option value="test" @if ($post['posted_by'] === 'test') selected @endif>test</option>
+                      @foreach ($users as $user)
+                        <option value="{{$user->id}}" @if ($post->user->id === $user->id) selected @endif>{{$user->name}}</option>
+                      @endforeach
                     </select>
                 </div>
                 
