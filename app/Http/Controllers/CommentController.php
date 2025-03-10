@@ -35,17 +35,9 @@ class CommentController extends Controller
         return to_route('posts.show', ['post' => $comment->commentable_id]);
     }
 
-    public function updateAjax($id) {
-        $comment = Comment::find($id);
-        $comment->update([
-            'content' => request()->content,
-        ]);
-        return response()->json(['success' => true]);
-    }
-
     public function edit($id) {
         $comment = Comment::find($id);
-        return view('comments.edit', ['comment' => $comment]);
+        return view('comments.edit-model', ['comment' => $comment]);
     }
 
     public function create() {
