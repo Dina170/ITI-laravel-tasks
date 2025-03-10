@@ -12,7 +12,7 @@
             </div>
             @endif
             <div class="rounded-lg bg-white p-8 shadow-lg lg:col-span-3 lg:p-12">
-              <form action="/posts" method="POST" class="space-y-4">
+              <form action="/posts" method="POST" class="space-y-4" enctype="multipart/form-data">
                 @csrf
                 <div>
                   <label class="sr-only" for="name">Title</label>
@@ -24,7 +24,6 @@
                   />
                 </div>
       
-                
                 <div>
                     <label class="sr-only" for="message">Description</label>
                     
@@ -41,6 +40,14 @@
                         <option value="{{$user->id}}">{{$user->name}}</option>
                       @endforeach
                     </select>
+                </div>
+                <div class="grid grid-cols-1 gap-4 text-center sm:grid-cols-3">
+                  <input
+                  class="w-full rounded-lg border border-gray-200 p-3 text-sm"
+                  placeholder="image"
+                  type="file"
+                  name="image"
+                />
                 </div>
                 
                 <div class="mt-4">

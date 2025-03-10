@@ -25,7 +25,7 @@ class Post extends Model
         ];
     }
     
-    protected $fillable = ['title', 'description', 'user_id'];
+    protected $fillable = ['title', 'description', 'user_id', 'image'];
 
     public function user()
     {

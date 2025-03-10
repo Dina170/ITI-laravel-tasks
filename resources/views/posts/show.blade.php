@@ -1,7 +1,13 @@
 <x-layout title="View Post">
     <div class="overflow-x-auto flex justify-center gap-10 mt-3">
-        <article class="max-w-1/2 min-w-75 ml-10 rounded-lg shadow-sm transition hover:shadow-lg h-75">
-          
+        <article class="max-w-1/2 min-w-75 ml-10 rounded-lg shadow-sm transition hover:shadow-lg">
+          @if ($post->image)
+          <img
+              alt="Post Image"
+              src="{{ asset('storage/' . $post->image) }}"
+              class="h-56 w-full object-cover"
+          />
+          @endif
         <div class="bg-white p-4 sm:p-6">
           <time datetime="2022-10-10" class="block text-xs text-gray-500">{{ $post->created_at->format('d M Y') }}</time>
           {{-- <time datetime="2022-10-10" class="block text-xs text-gray-500">{{ \Carbon\Carbon::parse($post->created_at)->format('d M Y') }}</time> --}}
