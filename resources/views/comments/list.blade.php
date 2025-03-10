@@ -1,7 +1,7 @@
 @foreach ($comments as $comment)
     <div class="comment mb-4 p-4 border rounded-lg">
         <p class="text-gray-700">{{ $comment->content }}</p>
-        <small class="text-gray-500">Posted on {{ $comment->created_at }}</small>
+        <small class="text-gray-500">Posted on {{ $comment->created_at->format('d M Y') }}</small>
         <div class="flex justify-end mt-2">
             <button class="text-blue-500 hover:text-blue-700 mr-2" data-comment-id="{{ $comment->id }}" data-comment-content="{{ $comment->content }}" onclick="openEditModal(this)">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">

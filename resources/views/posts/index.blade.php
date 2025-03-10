@@ -18,7 +18,7 @@
             <td class="px-4 py-2 font-medium whitespace-nowrap text-gray-900">{{$post->id}}</td>
             <td class="px-4 py-2 whitespace-nowrap text-gray-700">{{$post->title}}</td>
             <td class="px-4 py-2 whitespace-nowrap text-gray-700">{{$post->user?->name}}</td>
-            <td class="px-4 py-2 whitespace-nowrap text-gray-700">{{ \Carbon\Carbon::parse($post->created_at)->format('d M Y') }}</td>
+            <td class="px-4 py-2 whitespace-nowrap text-gray-700">{{ $post->created_at->format('d M Y') }}</td>
             <td class="px-4 py-2 whitespace-nowrap">
               <a href="{{route('posts.show', $post['id'])}}"
                 class="inline-block rounded-sm bg-indigo-600 px-4 py-2 text-xs font-medium text-white hover:bg-indigo-700"
