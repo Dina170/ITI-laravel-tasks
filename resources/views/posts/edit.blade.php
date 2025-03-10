@@ -1,6 +1,16 @@
 <x-layout title="Update Post">
     <section class="bg-gray-100">
         <div class="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
+          @if ($errors->any())
+          <div role="alert" class="max-w-3xl mx-auto mb-4 rounded-sm border-s-4 border-red-500 bg-red-50 p-4">
+              <strong class="block font-medium text-red-800"> Something went wrong </strong>
+              <ul>
+              @foreach ($errors->all() as $error)
+                  <li>{{ $error }}</li>
+              @endforeach        
+              </ul>
+            </div>
+            @endif
             <div class="rounded-lg bg-white p-8 shadow-lg lg:col-span-3 lg:p-12">
               <form action="/posts/{{$post['id']}}" method="POST" class="space-y-4">
                 @csrf

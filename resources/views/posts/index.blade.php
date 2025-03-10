@@ -1,4 +1,5 @@
 <x-layout title="Blog Posts">
+  
     <div class="overflow-x-auto flex justify-center">
       <table class="min-w-3/4 divide-y-2 divide-gray-200 bg-white text-sm">
         <thead class="ltr:text-left rtl:text-right">
