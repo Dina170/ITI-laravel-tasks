@@ -21,6 +21,7 @@ Route::middleware('auth')->get('/posts', [PostController::class, 'index'])->name
 Route::middleware('auth')->post('/posts', [PostController::class, 'store'])->name('posts.store');
 Route::middleware('auth')->get('/posts/create', [PostController::class, 'create'])->name('posts.create');
 Route::middleware('auth')->get('/posts/{post}', [PostController::class, 'show'])->name('posts.show');
+Route::middleware('auth')->get('/posts/{post}/ajax', [PostController::class, 'show_json'])->name('posts.show_json');
 Route::middleware('auth')->get('/posts/{post}/edit', [PostController::class, 'edit'])->name('posts.edit');
 Route::middleware('auth')->put('/posts/{post}', [PostController::class, 'update'])->name('posts.update');
 Route::middleware('auth')->delete('/posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy');

@@ -37,6 +37,12 @@ class PostController extends Controller
         return view('posts.show', ['post' => $post]);
     }
 
+    public function show_json($id) {   
+        $post = Post::with('user')->find($id);
+        // return view('posts.show', ['post' => $post]);
+        return response()->json($post);
+    }
+
     public function store(StorePostRequest $request) {  
         if ($request->hasFile('image')) {
             $imagePath = $request->file('image')->store('images', 'public');
