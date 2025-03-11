@@ -8,11 +8,16 @@ use App\Models\Post;
 use App\Http\Requests\StorePostRequest;
 use Illuminate\Support\Facades\Storage;
 
+use Inertia\Inertia;
+
 class PostController extends Controller
 {
     public function index() {
         $posts = Post::paginate(10); 
-        return view('posts.index', ['posts' => $posts]);
+        return Inertia::render('Posts/ListPosts', [
+            'posts' => $posts,
+        ]);
+        // return view('posts.index', ['posts' => $posts]);
     }
 
     public function create() {
