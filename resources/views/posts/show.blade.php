@@ -10,7 +10,6 @@
           @endif
         <div class="bg-white p-4 sm:p-6">
           <time datetime="2022-10-10" class="block text-xs text-gray-500">{{ $post->created_at->format('d M Y') }}</time>
-          {{-- <time datetime="2022-10-10" class="block text-xs text-gray-500">{{ \Carbon\Carbon::parse($post->created_at)->format('d M Y') }}</time> --}}
       
           <a href="#">
             <h3 class="mt-0.5 text-lg text-gray-900">{{$post->title}}</h3>
