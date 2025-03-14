@@ -23,47 +23,13 @@ const confirmDelete = (id) => {
 const viewPost = (id) => {
     axios.get(route('posts.show_json', id))
         .then((response) => {
-            const post = response.data;
-            console.log(post);
-
-            modalContent.value = `
-            
-            <article class="max-w-1/2 min-w-75 rounded-lg shadow-sm transition hover:shadow-lg">
-          <img v-if="${post.image}"
-              alt="Post Image"
-              src="storage/${post.image}"
-              class="h-56 w-full object-cover"
-          />
-        <div class="bg-white p-4 sm:p-6">
-          <time datetime="2022-10-10" class="block text-xs text-gray-500">${new Date(post.created_at).toLocaleDateString()}</time>
-      
-          <a href="#">
-            <h3 class="mt-0.5 text-lg text-gray-900">${post.title}</h3>
-          </a>
-      
-          <p class="mt-2 line-clamp-3 text-sm/relaxed text-gray-500">
-            ${post.description}
-          </p>
-        </div>
-        <div class="bg-white p-4 sm:p-6">
-          <time datetime="2022-10-10" class="block text-xs text-gray-500"> ${new Date(post.user.created_at).toLocaleDateString()}</time>
-      
-          <a href="#">
-            <h3 class="mt-0.5 text-lg text-gray-900">${post.user.name}</h3>
-          </a>
-      
-          <p class="mt-2 line-clamp-3 text-sm/relaxed text-gray-500">
-            ${post.user.email}
-          </p>
-        </div>
-      </article>           
-            `;
+            modalPost.value = response.data;
             showModal.value = true;
         });
 };
 
 const showModal = ref(false);
-const modalContent = ref('');
+const modalPost = ref(null);
 </script>
 
 <template>
@@ -111,7 +77,32 @@ const modalContent = ref('');
             </table>
         </div>
         <MyModal :show="showModal" @close="showModal = false">
-            <div v-html="modalContent"></div>
+            <template v-if="modalPost">
+                <article class="max-w-1/2 min-w-75 rounded-lg shadow-sm transition hover:shadow-lg">
+                    <img v-if="modalPost.image" :alt="modalPost.title" :src="`/storage/${modalPost.image}`"
+                        class="h-56 w-full object-cover" />
+                    <div class="bg-white p-4 sm:p-6">
+                        <time :datetime="modalPost.created_at" class="block text-xs text-gray-500">{{ new
+                            Date(modalPost.created_at).toLocaleDateString() }}</time>
+                        <a href="#">
+                            <h3 class="mt-0.5 text-lg text-gray-900">{{ modalPost.title }}</h3>
+                        </a>
+                        <p class="mt-2 line-clamp-3 text-sm/relaxed text-gray-500">
+                            {{ modalPost.description }}
+                        </p>
+                    </div>
+                    <div class="bg-white p-4 sm:p-6">
+                        <time :datetime="modalPost.user.created_at" class="block text-xs text-gray-500">{{ new
+                            Date(modalPost.user.created_at).toLocaleDateString() }}</time>
+                        <a href="#">
+                            <h3 class="mt-0.5 text-lg text-gray-900">{{ modalPost.user.name }}</h3>
+                        </a>
+                        <p class="mt-2 line-clamp-3 text-sm/relaxed text-gray-500">
+                            {{ modalPost.user.email }}
+                        </p>
+                    </div>
+                </article>
+            </template>
         </MyModal>
     </layout>
 </template>
