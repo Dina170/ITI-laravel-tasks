@@ -13,7 +13,7 @@ use Inertia\Inertia;
 class PostController extends Controller
 {
     public function index() {
-        $posts = Post::paginate(10); 
+        $posts = Post::with('user')->paginate(10); 
         return Inertia::render('Posts/ListPosts', [
             'posts' => $posts,
         ]);
@@ -63,17 +63,19 @@ class PostController extends Controller
         $post = Post::find($id);
 
         if ($request->hasFile('image')) {
-            Storage::disk('public')->delete($post->image);
+            if ($post->image) {
+                Storage::disk('public')->delete($post->image);
+            }
             $imagePath = $request->file('image')->store('images', 'public');
-            $post->update([
-                'image' => $imagePath,
-            ]);
+        } else {
+            $imagePath = $post->image;
         }
 
         $post->update([
             'title' => $request->title,
             'description' => $request->description,
             'user_id' => $request->posted_by,
+            'image' => $imagePath,
         ]);
         return to_route('posts.show', ['post' => $post->id]);
     }

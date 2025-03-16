@@ -12,7 +12,7 @@
             </div>
             @endif
             <div class="rounded-lg bg-white p-8 shadow-lg lg:col-span-3 lg:p-12">
-              <form action="/posts/{{$post['id']}}" method="POST" class="space-y-4">
+              <form action="/posts/{{$post['id']}}" method="POST" class="space-y-4" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <div>
@@ -43,6 +43,15 @@
                         <option value="{{$user->id}}" @if ($post->user->id === $user->id) selected @endif>{{$user->name}}</option>
                       @endforeach
                     </select>
+                </div>
+
+                <div class="grid grid-cols-1 gap-4 text-center sm:grid-cols-3">
+                  <input
+                  class="w-full rounded-lg border border-gray-200 p-3 text-sm"
+                  placeholder="image"
+                  type="file"
+                  name="image"
+                />
                 </div>
                 
                 <div class="mt-4">

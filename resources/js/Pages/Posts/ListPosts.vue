@@ -34,8 +34,8 @@ const modalPost = ref(null);
 
 <template>
     <layout>
-        <div class="overflow-x-auto flex justify-center">
-            <table class="min-w-3/4 divide-y-2 divide-gray-200 bg-white text-sm">
+        <div class="flex justify-center">
+            <table class="divide-y-2 divide-gray-200 bg-white text-sm">
                 <thead class="ltr:text-left rtl:text-right">
                     <tr>
                         <th class="px-4 py-2 font-medium whitespace-nowrap text-gray-900">ID</th>
@@ -44,7 +44,6 @@ const modalPost = ref(null);
                         <th class="px-4 py-2 font-medium whitespace-nowrap text-gray-900">Posted By</th>
                         <th class="px-4 py-2 font-medium whitespace-nowrap text-gray-900">Create At</th>
                         <th class="px-4 py-2 font-medium whitespace-nowrap text-gray-900">Actions</th>
-                        <th class="px-4 py-2"></th>
                     </tr>
                 </thead>
 
